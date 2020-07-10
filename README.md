@@ -9,7 +9,7 @@ PHP Pdfcrop is a PHP wrapper for [pdfcrop](http://pdfcrop.sourceforge.net/) base
 [PHP WkhtmlToPdf](https://github.com/mikehaertl/phpwkhtmltopdf) by [Michael Härtl](https://github.com/mikehaertl).
 **The `pdfcrop` command must be installed in the system.**
 
-##Installation
+## Installation
 
 Install the package through [composer](https://getcomposer.org/):
 ```
@@ -19,7 +19,7 @@ composer require bolongo/phppdfcrop
 Make sure you include the composer [autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading)
 somewhere in your codebase.
 
-##Example
+## Example
 ```php
 // You can pass a filename or an options array to the constructor
 $pdfCrop = new PdfCrop('/path/to/document.pdf');
@@ -31,8 +31,8 @@ try {
 }
 ```
 
-##Options
-###Command options
+## Options
+### Command options
 These are used as options for the `pdfcrop` shell command. For a better explanation of these options, please see
 `pdfcrop --help`.
 
@@ -96,7 +96,7 @@ $pdfCrop = new PDFCrop('/path/to/document.pdf');
 $pdfCrop->original = '/path/to/document.pdf';
 ```
 
-###Wrapper options
+### Wrapper options
 These options are specific to the wrapper. These options can be passed to the
     wrapper in the constructor or via the `setOptions($options)` method, mixed with the **Command Options**.
 
@@ -123,7 +123,7 @@ $pdfCrop->ignoreOptionValidationErrors = true;
 - **ignoreOptionValidationErrors:** prevents the option validation from throwing exceptions (malformed options will be
     ignored).
 
-##Error Handling
+## Error Handling
 
 `new PDFCrop($options)` and `setOptions($options)` will throw exceptions if an option is malformed and the option
     `ignoreOptionValidationErrors` is set to `false`.
@@ -179,5 +179,5 @@ if($pdfCrop->getError() != null) {
 }
 ```
 
-##Changelog
+## Changelog
 Check this library's changelog in [here](README.md).
