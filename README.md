@@ -180,4 +180,4 @@ if($pdfCrop->getError() != null) {
 ```
 
 ## Changelog
-Check this library's changelog in [here](README.md).
+Check this library's changelog in [here](CHANGELOG.md).

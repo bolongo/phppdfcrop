@@ -4,7 +4,7 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use bolongo\phppdfcrop\PdfCrop;
+use bolongo\phppdfcrop\PDFCrop;
 
 class PDFCropTest extends TestCase {
     public function testCanCreateCroppedPdfFromPdf() {
@@ -12,7 +12,7 @@ class PDFCropTest extends TestCase {
         $outFile = $this->getOutPdf();
         $binary = $this->getBinary();
 
-        $pdfCrop = new PdfCrop($inFile);
+        $pdfCrop = new PDFCrop($inFile);
         $pdfCrop->binary = $binary;
         $pdfCrop->saveAs($outFile);
         $this->assertNull($pdfCrop->getError());
@@ -28,7 +28,7 @@ class PDFCropTest extends TestCase {
         $inFile = $this->getPdfAsset();
         $binary = $this->getBinary();
 
-        $pdfCrop = new PdfCrop($inFile);
+        $pdfCrop = new PDFCrop($inFile);
         $pdfCrop->binary = $binary;
         $croppedPDFContents = $pdfCrop->toString();
         $this->assertNotEmpty($croppedPDFContents);
