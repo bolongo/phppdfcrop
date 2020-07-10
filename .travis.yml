@@ -1,0 +1,15 @@
+language: php
+dist: xenial
+php:
+  - "7.4"
+  - "7.3"
+  - "7.2"
+  - "7.1"
+  - "7.0"
+  - "5.6"
+before_install:
+  - sudo apt-get update
+
+install:
+  - sudo apt-get install ghostscript texlive-extra-utils
+  - composer install
