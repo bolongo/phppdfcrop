@@ -13,7 +13,7 @@ class Command extends BaseCommand {
      */
     public function addArgs($args) {
         if(isset($args['input'])) {
-            $this->addArg((string) $args['input']);
+            $this->addArg((string) $args['input'], null, true);
             unset($args['input']);
         }
 

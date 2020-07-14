@@ -11,16 +11,20 @@ class PDFCropTest extends TestCase {
         $inFile = $this->getPdfAsset();
         $outFile = $this->getOutPdf();
         $binary = $this->getBinary();
+        $pdftexBinary = $this->getPDFTexBinary();
 
         $pdfCrop = new PDFCrop($inFile);
         $pdfCrop->binary = $binary;
+        $pdfCrop->setOptions([
+            PDFCrop::PARAM_PDFTEX_COMMAND => $pdftexBinary,
+        ]);
         $pdfCrop->saveAs($outFile);
         $this->assertNull($pdfCrop->getError());
         $this->assertFileExists($outFile);
 
         $tempFile = $pdfCrop->getCroppedFilename();
 
-        $this->assertEquals("$binary '$inFile' '$tempFile'", (string) $pdfCrop->getCommand());
+        $this->assertEquals("$binary '--pdftexcmd' '$pdftexBinary' '$inFile' '$tempFile'", (string) $pdfCrop->getCommand());
         unlink($outFile);
     }
 
@@ -40,7 +44,11 @@ class PDFCropTest extends TestCase {
     }
 
     protected function getBinary() {
-        return '/usr/bin/pdfcrop';
+        return 'pdfcrop';
+    }
+
+    protected function getPDFTexBinary() {
+        return '/usr/bin/pdftex';
     }
 
     protected function getPdfAsset() {

@@ -1,11 +1,11 @@
-# PHP Pdfcrop
+# PHP PDFcrop
 
 [![Build Status](https://secure.travis-ci.org/bolongo/phppdfcrop.png)](http://travis-ci.org/bolongo/phppdfcrop)
 [![Latest Stable Version](https://poser.pugx.org/bolongo/phppdfcrop/v/stable.svg)](https://packagist.org/packages/bolongo/phppdfcrop)
 [![Total Downloads](https://poser.pugx.org/bolongo/phppdfcrop/downloads)](https://packagist.org/packages/bolongo/phppdfcrop)
 [![License](https://poser.pugx.org/bolongo/phppdfcrop/license.svg)](https://packagist.org/packages/bolongo/phppdfcrop)
 
-PHP Pdfcrop is a PHP wrapper for [pdfcrop](http://pdfcrop.sourceforge.net/) based on
+PHP PDFcrop is a PHP wrapper for [pdfcrop](http://pdfcrop.sourceforge.net/) based on
 [PHP WkhtmlToPdf](https://github.com/mikehaertl/phpwkhtmltopdf) by [Michael Härtl](https://github.com/mikehaertl).
 **The `pdfcrop` command must be installed in the system.**
 
@@ -23,10 +23,7 @@ somewhere in your codebase.
 ```php
 // You can pass a filename or an options array to the constructor
 $pdfCrop = new PdfCrop('/path/to/document.pdf');
-
-try {
-    $pdfCrop->saveAs('/path/to/cropped_document.pdf');
-} catch (Exception $e) {
+if($pdfCrop->getError() != null) {
     //Handle error here
 }
 ```
@@ -68,7 +65,7 @@ $options = [
 - **debug:** Makes the command print debug information.
 - **gscmd:** Specifies the path to the ghostscript command to be used by the command.
 - **tex-extension:** Specifies the tex extension to be used by the command. Value must be `pdftex`, `xetex` or `luatex`.
-    This option is the union of `--pdftex`, `--xetex` and `luatex` options present in the `pdfcrop` shell command,
+    This option is the union of `--pdftex`, `--xetex` and `--luatex` options present in the `pdfcrop` shell command,
     in which only one of these must be specified.
 - **pdftexcmd:** Specifies the path to the pdftex command to be used by the command.
 - **xetexcmd:** Specifies the path to the xetex command to be used by the command.
@@ -160,7 +157,7 @@ try {
 }
 ```
 
-`new saveAs($options)` and `toString()` with the option `ignoreWarnings` set to `true` will prevent exceptions from
+`saveAs($options)` and `toString()` with the option `ignoreWarnings` set to `true` will prevent exceptions from
     showing, but if an error presents itself in the process or saving of the generated file, the method `getError()`
     will return a string with the detailed error message.
 
